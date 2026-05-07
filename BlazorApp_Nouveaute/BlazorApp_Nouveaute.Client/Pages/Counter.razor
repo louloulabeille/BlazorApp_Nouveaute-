@@ -1,4 +1,4 @@
-﻿@page "/counter"
+﻿@page "/counter/{Init:int?}"
 @rendermode InteractiveAuto
 
 <PageTitle>Counter</PageTitle>
@@ -10,10 +10,19 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
+    [Parameter]
+    public int? Init { get; set; } 
+
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override void OnInitialized()
+    {
+        currentCount = Init ?? 0;
+        base.OnInitialized();
     }
 }
