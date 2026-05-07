@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BlazorApp_Nouveaute.Models/BlazorApp_Nouveaute.Models.csproj" />
+  <Project Path="BlazorApp_Nouveaute/BlazorApp_Nouveaute.Client/BlazorApp_Nouveaute.Client.csproj" />
+  <Project Path="BlazorApp_Nouveaute/BlazorApp_Nouveaute/BlazorApp_Nouveaute.csproj" />
+</Solution>

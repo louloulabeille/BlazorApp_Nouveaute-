@@ -1,0 +1,43 @@
+﻿@page "/Myform"
+
+@rendermode InteractiveServer
+@*@rendermode InteractiveAuto*@
+
+@inherits MyFormulaireBase
+
+<PageTitle>Mon formulaire</PageTitle>
+<h3>Formulaire</h3>
+
+
+<EditForm Model="Demo" OnSubmit="OnSubmitAsync">
+    <InputRadioGroup @bind-value="Demo.TrancheAge" Name="tranche_Age">
+        <p>Tranche d'âge:</p>
+        @foreach (var tranche in (TrancheAge[])Enum.GetValues(typeof(TrancheAge)))
+        {
+            <p>
+                <InputRadio Value="tranche" /> &nbsp;@tranche.ToString()
+            </p>
+        }
+    </InputRadioGroup>
+    <small>
+        <ValidationMessage For="() => Demo.TrancheAge" />
+    </small>
+
+    @* pour que le inputFile marche il faut qu'il soit en serveur *@
+    <InputFile OnChange="OnFileChanged" multiple></InputFile>
+    
+    <p>
+        <br />
+        <button class="btn btn-primary" type="submit">Envoi</button>
+    </p>
+
+
+</EditForm>
+
+
+
+
+@if (!string.IsNullOrEmpty(FileContent))
+{
+    <p>@FileContent</p>
+}
